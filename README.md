@@ -148,4 +148,18 @@ How actual system is 👎
 
 ![Cachedesign drawio](https://user-images.githubusercontent.com/4143476/134822407-7bb04832-856e-4bd8-bc40-bfde58ffca41.png)
 
+here we could use replication / master-slave (read write as well)
 
+Consistent hashing looks like this 👎
+
+take an array and store the hashesh of all nodes 
+
+arr = [h1,h2,h3,h4,h5]
+
+your requests should also generate the hashesh in same range
+
+binary search hash of incoming request  in arr and fetch that node ,
+
+addition of node no changes
+
+one node is down , put all things from one to another
