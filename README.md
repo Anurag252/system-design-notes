@@ -144,5 +144,8 @@ How actual system is 👎
 ![image](https://user-images.githubusercontent.com/4143476/134819195-9aaad907-14ec-44cd-9a9f-3dbcfb2a766e.png)
 
 
+# Cache designs
+
+![Cachedesign drawio](https://user-images.githubusercontent.com/4143476/134822407-7bb04832-856e-4bd8-bc40-bfde58ffca41.png)
 
 
