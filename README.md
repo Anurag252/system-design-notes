@@ -163,3 +163,11 @@ binary search hash of incoming request  in arr and fetch that node ,
 addition of node no changes
 
 one node is down , put all things from one to another
+
+
+Distributed locks 👎
+
+1. from a keystore , access the value 
+2. generate  a new value 
+3. while reading critical section , use key to get a value from store , if it matches current value , a lock can be obtained , put in your new value to block all others from obtaining locks 
+4. if value doesn't match go back and fetch new value 
