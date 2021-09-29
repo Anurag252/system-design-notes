@@ -183,3 +183,7 @@ separate Qs
 
 Tinder app design:-
 ![tinderdesign](https://user-images.githubusercontent.com/4143476/135311137-cf7771dd-0b60-4e12-a436-90064847fbfb.png)
+
+tiktok
+![tiktok drawio](https://user-images.githubusercontent.com/4143476/135321595-24c9d09f-97fd-4da6-a097-087b5f6d2e99.png)
+
