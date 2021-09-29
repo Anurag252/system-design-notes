@@ -171,3 +171,15 @@ Distributed locks 👎
 2. generate  a new value 
 3. while reading critical section , use key to get a value from store , if it matches current value , a lock can be obtained , put in your new value to block all others from obtaining locks 
 4. if value doesn't match go back and fetch new value 
+
+
+Stock exchange 👎
+missed matching engine concept
+separate Qs 
+
+![stocvexchange drawio](https://user-images.githubusercontent.com/4143476/135311010-a3a175a5-8d42-4d36-a86a-c9131eb37dd1.png)
+
+
+
+Tinder app design:-
+![tinderdesign](https://user-images.githubusercontent.com/4143476/135311137-cf7771dd-0b60-4e12-a436-90064847fbfb.png)
