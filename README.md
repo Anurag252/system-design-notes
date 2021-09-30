@@ -203,5 +203,6 @@ consistency :- 2 phase commits , sagas , outbox pattern
 WAF 
 ELK -
 Autoscaling :- if traffic is cyclical use predictive autoscaling
-
-
+talk between two services using service registry 
+configs in secrets
+ELB is example of service registry
