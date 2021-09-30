@@ -187,3 +187,21 @@ Tinder app design:-
 tiktok
 ![tiktok drawio](https://user-images.githubusercontent.com/4143476/135321595-24c9d09f-97fd-4da6-a097-087b5f6d2e99.png)
 
+Data estimation 👎
+type of db- Relational or NoSql
+amount of data in database --> 100 million customers 
+10% on cache -> ideal size is 2 GB , then shard
+Query per second 
+concurrent requests :-  
+
+Is system read heavy / write heavt 
+
+
+Resilience :- Circuit breakers 
+Highly available --> replication , cache , CDN , Redis , 99.99 means few mins per week , that means microservices deployment
+consistency :- 2 phase commits , sagas , outbox pattern 
+WAF 
+ELK -
+Autoscaling :- if traffic is cyclical use predictive autoscaling
+
+
