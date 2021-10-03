@@ -206,3 +206,64 @@ Autoscaling :- if traffic is cyclical use predictive autoscaling
 talk between two services using service registry 
 configs in secrets
 ELB is example of service registry
+
+
+sticky session
+rate limits - fixed , sliding window ,
+Leaking bucket :-  all drops can be exhausted in short duration and rest of the time we sit still
+implmn :- keep updating and reducing buckets with each requests and then refresj the bucket at start  
+sliding log :-  store like below
+10th sec - 1
+9th sec - 1
+7th sec -1
+.
+.
+
+here sum all for past 1 min
+
+sliding window :- store like fixed window . Fixed window has a problem that it in last 1 second we got 100 requests , and next 1 sec (start of new windows) we got another 100 , we would get burst of traffic
+
+to avoid this , look at current window and see how much window we have exausted . and add the logs from previous window , For example :- if we are at 25% in our window , we will see 75% logs from previous window . If it exeeds threshhold , we stop requests
+
+use cache to store the keys  , for APIs use consumer keys 
+
+
+Cache 👎
+Write-through cache: written to cache while writing to db
+
+cache aside :- application reads from cache and then hit db . read heavy systems are benefitted from this . 
+To avoid inconsistencies , we could implement TTL 
+
+with Cache-control Cache-Control: Max-Age and age :- these values are for browser side caching
+
+Read through cache :- like cache aside policy , but cache always stays consistent with Db (responsibilty of cache lib)
+
+write back cache :- cache to DB sync happens at a later stage :- write heavy systems
+
+
+
+pre loading cache to avoid db load when cache is booted
+
+Invalidation strategy :--
+1. FIFO :- First added cache is evicted first
+2. LIFo :- removes most recently added data
+3. LRU :- least recently used
+4. LFU :- least frequently used
+5. Random Selection :- random 
+
+AWS has options vlatile LRU :- takes TTL only LRU , all LRU :- takes all LRU
+
+Load balancing techniques :- 
+Random selection
+Round Robin :- simple
+Weighted round robim :- processing powers with round robin
+Least connection :- 
+Least response time
+Source IP Hashing :- sticky session
+
+Scalability 👎
+DB partition 
+
+
+Availability / Reliability
+Replication
