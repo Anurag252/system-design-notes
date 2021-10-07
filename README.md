@@ -267,3 +267,124 @@ DB partition
 
 Availability / Reliability
 Replication
+
+
+Circcuit breaker :- 
+```
+interface ICircuitBreakerStateStore
+{
+  CircuitBreakerStateEnum State { get; }
+
+  Exception LastException { get; }
+
+  DateTime LastStateChangedDateUtc { get; }
+
+  void Trip(Exception ex);
+
+  void Reset();
+
+  void HalfOpen();
+
+  bool IsClosed { get; }
+}
+```
+
+https://docs.microsoft.com/en-us/azure/architecture/patterns/
+
+ambassador pattern - 
+out of process but in same hosting env . if using container , then host it separately 
+can provide common functionality like monitoring , logging , CBreaking etc
+
+![image](https://user-images.githubusercontent.com/4143476/136404464-5e99410f-1fe6-4304-8e11-5720889933f9.png)
+
+Anti corruption layer 👎
+used to map two services speaking different formts or technologies 
+![image](https://user-images.githubusercontent.com/4143476/136404732-819c6468-28ce-420e-b12e-487c99a3068d.png)
+
+Asynchronous Request-Reply pattern
+In most cases, APIs for a client application are designed to respond quickly, on the order of 100 ms or less. 
+Polling is useful to client-side code, as it can be hard to provide call-back endpoints or use long running connections. Even when callbacks are possible, the extra libraries and services that are required can sometimes add too much extra complexity.
+![image](https://user-images.githubusercontent.com/4143476/136405846-e006100b-2d22-47b7-82c8-70be4026d55b.png)
+
+![image](https://user-images.githubusercontent.com/4143476/136406061-d3cb1eef-7037-4fe0-b648-7a4a335d8a51.png)
+
+
+Backedns for Frontends 
+Create separate backend services to be consumed by specific frontend applications or interfaces. This pattern is useful when you want to avoid customizing a single backend for multiple interfaces.
+![image](https://user-images.githubusercontent.com/4143476/136406691-9e19289b-a737-459d-b824-7146ceaf31be.png)
+
+Bulkhead
+Keep services isolated
+![image](https://user-images.githubusercontent.com/4143476/136408876-ac2f083b-1c41-4984-b00b-60db4dace30b.png)
+keep separation based on connection pool , failure of one service does not affect other
+![image](https://user-images.githubusercontent.com/4143476/136408957-653961a1-16e6-4868-a167-4fd862083527.png)
+
+Cache Aside 
+Lifetime of cached data.  TTL
+Evicting data.
+Priming the cache.
+Consistency.
+
+
+
+One of the drives for eventual consistency is that distributed data stores are subject to the CAP Theorem. This theorem states that a distributed system can implement only two of the three features (Consistency, Availability, and Partition Tolerance) at any one time. In practice, this means that you can either:
+
+Provide a consistent view of distributed (partitioned) data at the cost of blocking access to that data while any inconsistencies are resolved. This may take an indeterminate time, especially in systems that exhibit a high degree of latency or if a network failure causes loss of connectivity to one or more partitions.
+Provide immediate access to the data at the risk of it being inconsistent across sites. Traditional database management systems focus on providing strong consistency, whereas cloud-based solutions that utilize partitioned data stores are typically motivated by ensuring higher availability, and are therefore more oriented towards eventual consistency.
+
+
+Consistency 👎
+Try to achieve enevtual consistency 
+Hightly consistent solution , will need to acquire lock and hence system will not be highly available
+CQRS with Event sourcing is way to go forward
+take care of caches in case of eventual consistency
+
+
+CDN 👎
+video stream , static content , firmware updates etc
+challanges :---
+caching
+versioning
+cache-control
+testing 
+content security
+resilience
+
+Choreography 
+in orchestrator pattern , if we add a new service some rewiring is needed . We can use choreograpgy pattern where each service talk to other using a queue
+![image](https://user-images.githubusercontent.com/4143476/136423272-1e9da40f-a0bc-42b9-9bf3-a1dee8580505.png)
+
+Use the choreography pattern if you expect to update, remove, or add new services frequently. The entire app can be modified with lesser effort and minimal disruption to existing services.
+
+Circuit breaker 
+concurrency 
+testing 
+monitoring
+Recoverability --> when to test from open to half closed can be time bound or can also be # of failed request bound
+
+
+Claim Check 👎
+![image](https://user-images.githubusercontent.com/4143476/136424467-16da8a2e-e052-4332-8798-b8740632a2ad.png)
+
+in case of large messages , dont directly put it on bus , instead store it in db and send a reference to that message
+The pattern can also be used if the payload should be accessed only by services that are authorized to see it. By offloading the payload to an external resource, stricter authentication and authorization rules can be put in place, to ensure that security is enforced when sensitive data is stored in the payload.
+
+CQRS
+different data schemes for rea dand write
+Independent scaling
+Optimized data schemas
+Security
+Separation of concerns
+Simpler queries
+
+Compensating Transaction pattern
+
+![image](https://user-images.githubusercontent.com/4143476/136435673-36c97aa0-de3d-4b7a-b120-44f165a0dc9c.png)
+
+Undo the work performed by a series of steps, which together define an eventually consistent operation, if one or more of the steps fail. Operations that follow the eventual consistency model are commonly found in cloud-hosted applications that implement complex business processes and workflows.
+keep things idempotenet so that compensating transaction also succeed
+
+
+
+
+
