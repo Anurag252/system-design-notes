@@ -385,6 +385,73 @@ Undo the work performed by a series of steps, which together define an eventuall
 keep things idempotenet so that compensating transaction also succeed
 
 
+Competing consumers
+![image](https://user-images.githubusercontent.com/4143476/136438844-6010f34d-a34a-4175-a7e2-abb29b813438.png)
+lambda pattern
+
+
+deployment-stamp: 
+![image](https://user-images.githubusercontent.com/4143476/136439555-c6fdc3b7-389b-483c-ad08-562e28672258.png)
+
+event-sourcing
+store the data changes as a set of events in a event store and consumers are decoupled from the events
+example :- 
+![image](https://user-images.githubusercontent.com/4143476/136440416-3618e4a2-4710-4fb8-be84-0ec53e1ba974.png)
+
+
+external configuration store
+![image](https://user-images.githubusercontent.com/4143476/136440547-9d0ca31e-c60e-4e85-8fed-2612cbaf2882.png)
+
+
+Federated Identity pattern
+![image](https://user-images.githubusercontent.com/4143476/136441197-11c9e8e3-5f3c-4b62-a71a-70e3596fb352.png)
+
+Gatekeeper
+![image](https://user-images.githubusercontent.com/4143476/136441276-e21cee85-a22d-4e21-82dc-1a282afc524b.png)
+
+
+gateway agrregator
+![image](https://user-images.githubusercontent.com/4143476/136441351-78881366-bffb-45af-bbb8-59b4003d6ab1.png)
+
+
+Gatteway offloading
+Offload some features into a gateway, particularly cross-cutting concerns such as certificate management, authentication, SSL termination, monitoring, protocol translation, or throttling.
+
+![image](https://user-images.githubusercontent.com/4143476/136441503-ef0d964d-13c9-443b-bce4-769c8b9294e2.png)
+
+Gateway Routing Pattern
+use L7 information from request and route to correct service
+![image](https://user-images.githubusercontent.com/4143476/136442482-4ede055e-7d2d-441e-9991-8397a13670a2.png)
+
+
+Geode pattern
+The Geode pattern involves deploying a collection of backend services into a set of geographical nodes, each of which can service any request for any client in any region.
+![image](https://user-images.githubusercontent.com/4143476/136442558-97449b96-2ed3-4586-9cb1-22152b76e036.png)
+
+Health Endpoint Monitoring pattern
+![image](https://user-images.githubusercontent.com/4143476/136442745-1e56eb5e-433c-466a-aaea-2fa7e11f6ba0.png)
+
+Index  table
+
+Leader election
+In a cloud-based system that implements horizontal scaling, multiple instances of the same task could be running at the same time with each instance serving a different user. If these instances write to a shared resource, it's necessary to coordinate their actions to prevent each instance from overwriting the changes made by the others.
+
+Materialized views
+views that can remain updated
+
+Queue based load levelling
+use q to balance the load
+
+retry pattern
+
+
+good resource
+https://docs.microsoft.com/en-us/dotnet/architecture/cloud-native/relational-vs-nosql-data
+
+2ps commits :- commit request, acquire lock and then commit
+sagas can be used with event sourcing and compensating transactionn
+
+
 
 
 
