@@ -460,3 +460,31 @@ adds resiliency  👎
 
 The saga concept removes the need for a distributed transaction by ensuring that the transaction at each step of the business process has a defined compensating transaction. In this way, if the business process encounters an error condition and is unable to continue, it can execute the compensating transactions for the steps that have already completed. This undoes the work completed so far in the business process and maintains the consistency of the system.
 
+Types of Scaling
+Scaling typically takes one of two forms—vertical and horizontal scaling:
+
+**Vertical Scaling** (often referred to as scaling up) requires that you redeploy the solution using different hardware. In a cloud environment the hardware platform is typically a virtualized environment, and vertical scaling involves provisioning more powerful resources for this environment and moving the system onto these new resources. Vertical scaling is often a disruptive process that requires making the system temporarily unavailable while it is being redeployed. It may be possible to keep the original system running while the new hardware is provisioned and brought online, but there will likely be some interruption while the processing transitions from the old environment to the new one. It is uncommon to use autoscaling to implement a vertical scaling strategy.
+
+**Horizontal Scaling** (often referred to as scaling out) requires deploying the system on additional resources. The system can continue running without interruption while these resources are provisioned. When the provisioning process is complete, copies of the elements that comprise the system can be deployed on these additional resources and made available. If demand drops, the additional resources can be reclaimed after the elements using them have been shut down cleanly. Many cloud-based systems, including Microsoft Azure, support this form of autoscaling.
+
+Autoscaling long running processes , make sure that system is not designed in away that it  needs response from a server
+
+*Autoscaling and throlling pattern*
+
+throlle requests in case there is severe burst of traffic . Throttle based on priority tenants , or throttle based on tenants who have used many times etc. or kill resources in case traffic is very high
+
+Sagas work by laying out various competing transactions for each transaction
+
+Cacching: -
+seeding
+Caching typically works well with data that is immutable or that changes infrequently.
+in memory cache is fast , like httpruntime , but available to only a single instance
+shared cache is available to all
+Read-Through and Write-Through Caching
+Managing Data Expiration
+concurrency in cache 👎
+Depending on the nature of the data and the likelihood of collisions, you can adopt one of two approaches to concurrency:
+
+Optimistic. The application checks to see whether the data in the cache has changed since it was retrieved, immediately prior to updating it. If the data is still the same, the change can be made. Otherwise, the application has to decide whether to update it (the business logic that drives this decision will be application-specific). This approach is suitable for situations where updates are infrequent, or where collisions are unlikely to occur.
+Pessimistic. The application locks the data in the cache when it retrieves it to prevent another instance from changing the data. This process ensures that collisions cannot occur, but could block other instances that need to process the same data. Pessimistic concurrency can affect the scalability of the solution and should be used only for short-lived operations. This approach may be appropriate for situations where collisions are more likely, especially if an application updates multiple items in the cache and must ensure that these changes are applied consistently.
+
