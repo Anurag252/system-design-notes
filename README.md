@@ -452,6 +452,10 @@ https://docs.microsoft.com/en-us/dotnet/architecture/cloud-native/relational-vs-
 sagas can be used with event sourcing and compensating transactionn
 
 
+Scheduler agent supervisor
+adds resiliency  👎
+![image](https://user-images.githubusercontent.com/4143476/136706087-97988369-7246-4a38-a352-74277302f851.png)
+
 
 
 
