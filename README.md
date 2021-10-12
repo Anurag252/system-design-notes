@@ -489,3 +489,48 @@ Optimistic. The application checks to see whether the data in the cache has chan
 Pessimistic. The application locks the data in the cache when it retrieves it to prevent another instance from changing the data. This process ensures that collisions cannot occur, but could block other instances that need to process the same data. Pessimistic concurrency can affect the scalability of the solution and should be used only for short-lived operations. This approach may be appropriate for situations where collisions are more likely, especially if an application updates multiple items in the cache and must ensure that these changes are applied consistently.
 
 openApi specs https://stoplight.io/openapi/
+
+system design guidelines 👎
+
+ask functional + non functional :- 
+No Buzzword :- 
+clear and organized thinking :- 
+drive discussion :- 
+
+
+features :- MVP 
+API , what , who is going to call
+availability :- 
+Latency
+scalability
+Durability :- data is not lost 
+class diagrma/ data modelling
+security & privacy
+cost effective
+
+
+use NoSql when Availability more preffered
+SQL when consistency more preferred
+
+
+take name of cache
+eviction policy
+updation policy
+table structure of cache
+cache size and cache hits
+
+Consistency :- see for SQL , sagas  + compensating transactions , locking
+HA :- replication , CDN , 
+low latency :- pre calculated /aggregated , denormalized , caches , CDN , 
+in case of real time , talk about the average data ingestion rate , amazon kenesis and shards of data 
+talk about replication , 
+
+elk uses inverted search
+
+
+
+Twitter 
+
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/4143476/136996165-b5fdd79a-7299-42ab-84ee-9821b5206485.png)
+
+
