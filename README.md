@@ -535,3 +535,4 @@ Twitter
 
 
 tcp has 16 bits for port so a total of 65535 ports
+websocket should be backed by pub/sub , 
