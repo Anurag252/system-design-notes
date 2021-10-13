@@ -534,3 +534,4 @@ Twitter
 ![Untitled Diagram drawio](https://user-images.githubusercontent.com/4143476/136996165-b5fdd79a-7299-42ab-84ee-9821b5206485.png)
 
 
+tcp has 16 bits for port so a total of 65535 ports
